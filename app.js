@@ -16,12 +16,6 @@ let internArr = [];
 
 renderQuestions();
 
-
-
-
-
-
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
@@ -110,12 +104,10 @@ function renderInternQuestions() {
 }
 
 function renderHtml() {
-    console.log("manager");
-    console.log(manager);
-    console.log("engineer");
-    console.log(engineerArr);
-    console.log("intern");
-    console.log(internArr);
+    const employeeArr = [manager,...engineerArr,...internArr];
+    const html = render(employeeArr);
+    console.log(html);
+
 }
 
  function renderQuestions() {
