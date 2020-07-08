@@ -10,19 +10,22 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-/* function startApp(){
-    let engineerArr = [];
+let engineerArr = [];
+let manager ={}
 let internArr = [];
 
 renderQuestions();
 
-} */
+
+
+
+
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-function renderTeamMembersQuestion() {
+ function renderTeamMembersQuestion() {
 
     const answers = inquirer.prompt([
         {
@@ -45,7 +48,7 @@ function renderTeamMembersQuestion() {
             renderHtml();
         } 
     })
-}
+} 
 function renderEngineerQuestions() {
     const answers = inquirer.prompt([
         {
@@ -101,13 +104,18 @@ function renderInternQuestions() {
             }
 
         ]).then(function(answers){
-             internArr.push(new Engineer(answers.internName, answers.internId, answers.internEmailId, answers.internSchool));
+             internArr.push(new Intern(answers.internName, answers.internId, answers.internEmailId, answers.internSchool));
         renderTeamMembersQuestion();
         })
 }
 
 function renderHtml() {
-
+    console.log("manager");
+    console.log(manager);
+    console.log("engineer");
+    console.log(engineerArr);
+    console.log("intern");
+    console.log(internArr);
 }
 
  function renderQuestions() {
@@ -136,8 +144,8 @@ function renderHtml() {
             }
 
         ]).then(function(answers){
-             renderTeamMembersQuestion();
-       //  console.log(new Manager(answers.managerName,answers.managerId,answers.managerEmailId,answers.managerOfficeNumber));
+            renderTeamMembersQuestion();
+         manager = new Manager(answers.managerName,answers.managerId,answers.managerEmailId,answers.managerOfficeNumber);
         })
 }
 
